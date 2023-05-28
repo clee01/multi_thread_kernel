@@ -1,7 +1,18 @@
-ORG 0x7c00  ; 0x0000:7c00
+ORG 0
 BITS 16  ; 引导程序，默认是16位模式
 
+jmp 0x7c0:start
+
 start:
+    cli  ; Clear Interrupts
+    mov ax, 0x7c0
+    mov ds, ax
+    mov es, ax
+    mov ax, 0x00
+    mov ss, ax
+    mov sp, 0x7c00
+    sti  ; Enables Interrupts
+
     mov si, message
     call print
     jmp $
