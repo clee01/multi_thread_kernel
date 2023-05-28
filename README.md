@@ -29,3 +29,4 @@ ndisasm ./boot.bin
 # 运行
 qemu-system-x86_64 -hda ./boot.bin
 ```
+![image](https://github.com/clee01/multi_thread_kernel/blob/master/img/hello_world.jpg)
