@@ -1,5 +1,5 @@
-ORG 0x7c00
-BITS 16
+ORG 0x7c00  ;0x0000:7c00
+BITS 16  ;引导程序，默认是16位模式
 
 start:
     mov si, message
@@ -25,4 +25,4 @@ print_char:
 message: db 'Hello World!', 0
 
 times 510-($ - $$) db 0
-dw 0xAA55
+dw 0xAA55  ;主引导扇区代码
