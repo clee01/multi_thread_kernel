@@ -76,6 +76,20 @@ qemu-system-x86_64 -hda ./boot_segment_memory.bin
 nasm -f bin ./boot_real_hardware.asm -o ./boot_real_hardware.bin
 # 反汇编（可选的）
 ndisasm ./boot_real_hardware.bin
-# 运行
-qemu-system-x86_64 -hda ./boot_real_hardware.bin
+# 列出所有可用的分区类型
+sudo fdisk -l
+# 读取、转换并输出数据 !注意，确保sdb(这里是USB)上没有重要内容
+sudo dd if ./boot_real_hardware.bin of=/dev/sdb
+# 后续可以用这个USB作为bootloader启动计算机
 ```
+
+### 中断向量表
+```
+# 编译
+nasm -f bin ./boot_interrupt_vector_table.asm -o ./boot_interrupt_vector_table.bin
+# 反汇编（可选的）
+ndisasm ./boot_interrupt_vector_table.bin
+# 运行
+qemu-system-x86_64 -hda ./boot_interrupt_vector_table.bin
+```
+![image](https://github.com/clee01/multi_thread_kernel/blob/master/img/interrupt_vector_table.jpg)
