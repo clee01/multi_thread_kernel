@@ -93,3 +93,6 @@ ndisasm ./boot_interrupt_vector_table.bin
 qemu-system-x86_64 -hda ./boot_interrupt_vector_table.bin
 ```
 ![image](https://github.com/clee01/multi_thread_kernel/blob/master/img/interrupt_vector_table.jpg)
+
+### 读取硬盘
+[DISK - WRITE DISK SECTOR(S)](http://www.ctyme.com/intr/rb-0608.htm)
