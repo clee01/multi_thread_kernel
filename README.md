@@ -96,3 +96,26 @@ qemu-system-x86_64 -hda ./boot_interrupt_vector_table.bin
 
 ### 读取硬盘
 [DISK - WRITE DISK SECTOR(S)](http://www.ctyme.com/intr/rb-0608.htm)
+```
+# 编译
+nasm -f bin ./boot_read_hard_disk.asm -o ./boot_read_hard_disk.bin
+# 查看message.txt
+cat message.txt
+
+bingo!
+
+# 追加message.txt到boot_read_hard_disk.bin
+dd if=./message.txt >> ./boot_read_hard_disk.bin
+# 追加sector到boot_read_hard_disk.bin
+dd if=/dev/zero bs=512 count=1 >> ./boot_read_hard_disk.bin
+# 安装十六进制编辑器
+sudo apt install bless
+# 查看bin文件
+bless boot_read_hard_disk.bin
+```
+![image](https://github.com/clee01/multi_thread_kernel/blob/master/img/boot_read_hard_disk_bin.jpg)
+```
+# 运行
+qemu-system-x86_64 -hda ./boot_read_hard_disk.bin
+```
+![image](https://github.com/clee01/multi_thread_kernel/blob/master/img/run.jpg)
