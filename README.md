@@ -119,3 +119,37 @@ bless boot_read_hard_disk.bin
 qemu-system-x86_64 -hda ./boot_read_hard_disk.bin
 ```
 ![image](https://github.com/clee01/multi_thread_kernel/blob/master/img/run.jpg)
+
+### 保护模式
+```
+# 编译
+nasm -f bin ./boot_protected_mode.asm -o ./boot_protected_mode.bin
+# 安装gdb
+sudo apt install gdb
+# 运行gdb
+gdb
+# 
+(gdb) target remote | qemu-system-x86_64 -hda ./boot_protected_mode.bin -S -gdb stdio
+```
+![image](https://github.com/clee01/multi_thread_kernel/blob/master/img/target.jpg)
+```
+# 继续
+(gdb) c
+Continuing.
+```
+![image](https://github.com/clee01/multi_thread_kernel/blob/master/img/continue.jpg)
+```
+# ctrl-c中断
+^C
+```
+![image](https://github.com/clee01/multi_thread_kernel/blob/master/img/ctrl_c.jpg)
+```
+# 
+(gdb) layout asm
+```
+![image](https://github.com/clee01/multi_thread_kernel/blob/master/img/layout_asm.jpg)
+```
+# 
+info registers
+```
+![image](https://github.com/clee01/multi_thread_kernel/blob/master/img/info_registers.jpg)
