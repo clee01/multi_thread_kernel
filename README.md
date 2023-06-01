@@ -128,28 +128,28 @@ nasm -f bin ./boot_protected_mode.asm -o ./boot_protected_mode.bin
 sudo apt install gdb
 # 运行gdb
 gdb
-# 
+# 连接调试
 (gdb) target remote | qemu-system-x86_64 -hda ./boot_protected_mode.bin -S -gdb stdio
 ```
 ![image](https://github.com/clee01/multi_thread_kernel/blob/master/img/target.jpg)
 ```
-# 继续
+# 继续，可以看到程序运行就停在了"Booting from Hard Disk..."下一行处
 (gdb) c
 Continuing.
 ```
 ![image](https://github.com/clee01/multi_thread_kernel/blob/master/img/continue.jpg)
 ```
-# ctrl-c中断
+# ctrl-c中断，可以看到程序是运行在0x7c7f处被中断的
 ^C
 ```
 ![image](https://github.com/clee01/multi_thread_kernel/blob/master/img/ctrl_c.jpg)
 ```
-# 
+# 显示汇编窗口，可以看到0x7c7f处是"jmp $"指令，符合预期
 (gdb) layout asm
 ```
 ![image](https://github.com/clee01/multi_thread_kernel/blob/master/img/layout_asm.jpg)
 ```
-# 
+# 可以看到对应各个寄存器设定的值也是和程序中所设定的一致
 info registers
 ```
 ![image](https://github.com/clee01/multi_thread_kernel/blob/master/img/info_registers.jpg)
