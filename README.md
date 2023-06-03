@@ -153,3 +153,11 @@ Continuing.
 info registers
 ```
 ![image](https://github.com/clee01/multi_thread_kernel/blob/master/img/info_registers.jpg)
+
+### 开启A20
+A20或地址线20是构成基于`x86`的计算机系统总线的电线之一。A20线特别用于传输地址总线上的第21位。
+```
+in al, 0x92
+or al, 2
+out 0x92, al
+```
