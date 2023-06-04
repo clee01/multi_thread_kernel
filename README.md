@@ -161,3 +161,30 @@ in al, 0x92
 or al, 2
 out 0x92, al
 ```
+
+### 加载32位内核程序至内存
+```
+# 脚本编译
+./build.sh
+# 运行gdb
+gdb
+# 载入symbol file
+(gdb) add-symbol-file build/kernelfull.o 0x100000
+# 打断点
+(gdb) break _start
+# 连接调试
+(gdb) target remote | qemu-system-x86_64 -hda ./bin/os.bin -S -gdb stdio
+# 开始执行（可以看到停在了断点处）
+(gdb) c
+Continuing.
+
+Breakpoint 1, 0x0000000000100000 in _start ()
+# 显示汇编窗口
+(gdb) layout asm
+```
+![image](https://github.com/clee01/multi_thread_kernel/blob/master/img/break.jpg)
+```
+# 单步调试
+(gdb) stepi
+```
+![image](https://github.com/clee01/multi_thread_kernel/blob/master/img/stepi.jpg)
