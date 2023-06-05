@@ -188,3 +188,21 @@ Breakpoint 1, 0x0000000000100000 in _start ()
 (gdb) stepi
 ```
 ![image](https://github.com/clee01/multi_thread_kernel/blob/master/img/stepi.jpg)
+
+### 运行C代码
+```
+...
+# 打断点
+(gdb) break kernel_main
+```
+![image](https://github.com/clee01/multi_thread_kernel/blob/master/img/break_kernel_main.jpg)
+```
+# 查看当前堆栈
+(gdb) bt
+```
+![image](https://github.com/clee01/multi_thread_kernel/blob/master/img/backtrace.jpg)
+```
+# 单步调试
+(gdb) stepi
+```
+![image](https://github.com/clee01/multi_thread_kernel/blob/master/img/stepi_1.jpg)
