@@ -206,3 +206,5 @@ Breakpoint 1, 0x0000000000100000 in _start ()
 (gdb) stepi
 ```
 ![image](https://github.com/clee01/multi_thread_kernel/blob/master/img/stepi_1.jpg)
+
+### 屏幕显示Hello world
