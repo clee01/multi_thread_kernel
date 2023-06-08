@@ -211,3 +211,12 @@ Breakpoint 1, 0x0000000000100000 in _start ()
 
 ### 实现中断描述符表
 
+### 实现I/O读取接口
+```
+// src/io/io.h
+unsigned char insb(unsigned short port);
+unsigned short insw(unsigned short port);
+
+void outb(unsigned short port, unsigned char val);
+void outw(unsigned short port, unsigned short val);
+```
