@@ -214,6 +214,7 @@ Breakpoint 1, 0x0000000000100000 in _start ()
 ### 实现I/O读取接口
 ```
 // src/io/io.h
+// 函数原型
 unsigned char insb(unsigned short port);
 unsigned short insw(unsigned short port);
 
