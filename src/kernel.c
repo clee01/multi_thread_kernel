@@ -69,5 +69,5 @@ void kernel_main() {
 
     // problem();
 
-    outw(0x60, 0xffff);
+    // outw(0x60, 0xffff);
 }

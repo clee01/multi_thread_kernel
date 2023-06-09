@@ -3,13 +3,13 @@
 ## 学习路线
 ### 准备
 * 操作系统发行版本
-```
+```powershell
 cat /etc/issue
 
 Ubuntu 18.04.1 LTS \n \l
 ```
 * 安装`nasm`汇编语言编译程序
-```
+```powershell
 # 安装
 sudo apt install nasm
 
@@ -18,7 +18,7 @@ nasm -f <format> <filename> [-o <output>]
 ```
 
 * 安装`qemu-system-x86`虚拟机软件
-```
+```powershell
 # 安装
 sudo apt install qemu-system-x86
 
@@ -27,7 +27,7 @@ qemu-system-x86_64 -hda <filename>  # 为客户机指定块存储设备
 ```
 
 ### Hello World Bootloader
-```
+```powershell
 # 编译
 nasm -f bin ./boot_hello_world.asm -o ./boot_hello_world.bin
 # 反汇编（可选的）
@@ -46,7 +46,7 @@ qemu-system-x86_64 -hda ./boot_hello_world.bin
 
 * 计算物理地址
   * 物理地址 = 段寄存器 * 16 + 偏移地址
-```
+```powershell
 # 编译
 nasm -f bin ./boot_segment_memory.asm -o ./boot_segment_memory.bin
 # 反汇编（可选的）
@@ -71,7 +71,7 @@ qemu-system-x86_64 -hda ./boot_segment_memory.bin
 * `DBR`：`Dos Boot Record`通常包括一个引导程序和一个被称为`BPB`（`BIOS Parameter Block`）的本分区参数记录表。引导程序的主要任务是当`MBR`将系统控制权交给它时，判断本分区根目录前两个文件是不是操作系统的引导文件。如果确定存在，就把它读入内存并把控制权交给该文件。`BPB`参数块记录着本分区的起始扇区、结束扇区、文件存储格式、硬件介质描述符、根目录大小、`FAT`个数和分配单元的大小等重要参数
 * `VBR`：每个非扩展分区以及逻辑分区的第一个扇区（`VBR`包括`DBR`（非扩展分区）和`EBR`），可存放小段程序，用于启动该分区上某程序或者操作系统（`DBR`）
 * 扩展分区中的每个逻辑驱动器都存在一个类似于`MBR`的扩展引导记录（`EBR`，`Extended Boot Record`）
-```
+```powershell
 # 编译
 nasm -f bin ./boot_real_hardware.asm -o ./boot_real_hardware.bin
 # 反汇编（可选的）
@@ -84,7 +84,7 @@ sudo dd if ./boot_real_hardware.bin of=/dev/sdb
 ```
 
 ### 中断向量表
-```
+```powershell
 # 编译
 nasm -f bin ./boot_interrupt_vector_table.asm -o ./boot_interrupt_vector_table.bin
 # 反汇编（可选的）
@@ -96,7 +96,7 @@ qemu-system-x86_64 -hda ./boot_interrupt_vector_table.bin
 
 ### 读取硬盘
 [DISK - WRITE DISK SECTOR(S)](http://www.ctyme.com/intr/rb-0608.htm)
-```
+```powershell
 # 编译
 nasm -f bin ./boot_read_hard_disk.asm -o ./boot_read_hard_disk.bin
 # 查看message.txt
@@ -114,14 +114,14 @@ sudo apt install bless
 bless boot_read_hard_disk.bin
 ```
 ![image](https://github.com/clee01/multi_thread_kernel/blob/master/img/boot_read_hard_disk_bin.jpg)
-```
+```powershell
 # 运行
 qemu-system-x86_64 -hda ./boot_read_hard_disk.bin
 ```
 ![image](https://github.com/clee01/multi_thread_kernel/blob/master/img/run.jpg)
 
 ### 保护模式
-```
+```powershell
 # 编译
 nasm -f bin ./boot_protected_mode.asm -o ./boot_protected_mode.bin
 # 安装gdb
@@ -132,23 +132,23 @@ gdb
 (gdb) target remote | qemu-system-x86_64 -hda ./boot_protected_mode.bin -S -gdb stdio
 ```
 ![image](https://github.com/clee01/multi_thread_kernel/blob/master/img/target.jpg)
-```
+```powershell
 # 继续，可以看到程序运行就停在了"Booting from Hard Disk..."下一行处
 (gdb) c
 Continuing.
 ```
 ![image](https://github.com/clee01/multi_thread_kernel/blob/master/img/continue.jpg)
-```
+```powershell
 # ctrl-c中断，可以看到程序是运行在0x7c7f处被中断的
 ^C
 ```
 ![image](https://github.com/clee01/multi_thread_kernel/blob/master/img/ctrl_c.jpg)
-```
+```powershell
 # 显示汇编窗口，可以看到0x7c7f处是"jmp $"指令，符合预期
 (gdb) layout asm
 ```
 ![image](https://github.com/clee01/multi_thread_kernel/blob/master/img/layout_asm.jpg)
-```
+```powershell
 # 可以看到对应各个寄存器设定的值也是和程序中所设定的一致
 info registers
 ```
@@ -156,14 +156,14 @@ info registers
 
 ### 开启A20
 A20或地址线20是构成基于`x86`的计算机系统总线的电线之一。A20线特别用于传输地址总线上的第21位。
-```
+```powershell
 in al, 0x92
 or al, 2
 out 0x92, al
 ```
 
 ### 加载32位内核程序至内存
-```
+```powershell
 # 脚本编译
 ./build.sh
 # 运行gdb
@@ -183,25 +183,25 @@ Breakpoint 1, 0x0000000000100000 in _start ()
 (gdb) layout asm
 ```
 ![image](https://github.com/clee01/multi_thread_kernel/blob/master/img/break.jpg)
-```
+```powershell
 # 单步调试
 (gdb) stepi
 ```
 ![image](https://github.com/clee01/multi_thread_kernel/blob/master/img/stepi.jpg)
 
 ### 运行C代码
-```
+```powershell
 ...
 # 打断点
 (gdb) break kernel_main
 ```
 ![image](https://github.com/clee01/multi_thread_kernel/blob/master/img/break_kernel_main.jpg)
-```
+```powershell
 # 查看当前堆栈
 (gdb) bt
 ```
 ![image](https://github.com/clee01/multi_thread_kernel/blob/master/img/backtrace.jpg)
-```
+```powershell
 # 单步调试
 (gdb) stepi
 ```
@@ -212,7 +212,7 @@ Breakpoint 1, 0x0000000000100000 in _start ()
 ### 实现中断描述符表
 
 ### 实现I/O读取接口
-```
+```c
 // src/io/io.h
 // 函数原型
 unsigned char insb(unsigned short port);
@@ -220,4 +220,20 @@ unsigned short insw(unsigned short port);
 
 void outb(unsigned short port, unsigned char val);
 void outw(unsigned short port, unsigned short val);
+```
+
+### 可编程中断处理器（PIC）实现
+```x86asm
+setup_pic:
+    ; Initialize some flags in the PIC's
+    mov al, 00010001b  ; b4=1: Init; b3=0: Edge; b1=0: Cascade; b0=1: Need 4th init step
+    out 0x20, al  ; Tell master
+
+    mov al, 0x20  ; Master IRQ0 should be on INT 0x20 (Just after intel exception)
+    out 0x21, al
+
+    mov al, 00000001b  ; b4=0: FNM; b3-2=00: Master/Slave set by hardware; b1=0: Not AEOI; b0=1: x86 mode
+    out 0x21, al
+
+    ret
 ```
