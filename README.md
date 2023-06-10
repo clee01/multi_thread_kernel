@@ -246,3 +246,6 @@ void* ptr3 = kmalloc(5600);  // 0x1003000
 kfree(ptr);
 void* ptr4 = kmalloc(50);  // 0x1000000
 ```
+> 注意：此时需要用`qemu-system-i386`执行，模拟`32`位`Intel`架构`CPU`
+
+### 
