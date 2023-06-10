@@ -237,3 +237,12 @@ setup_pic:
 
     ret
 ```
+
+### 自定义堆实现
+```c
+void* ptr = kmalloc(50);  // 0x1000000
+void* ptr2 = kmalloc(5000);  // 0x1001000
+void* ptr3 = kmalloc(5600);  // 0x1003000
+kfree(ptr);
+void* ptr4 = kmalloc(50);  // 0x1000000
+```
