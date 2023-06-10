@@ -74,4 +74,7 @@ void kernel_main() {
     // problem();
 
     // outw(0x60, 0xffff);
+
+    // Enable the system interrupts
+    enable_interrupts();
 }

@@ -248,4 +248,12 @@ void* ptr4 = kmalloc(50);  // 0x1000000
 ```
 > 注意：此时需要用`qemu-system-i386`执行，模拟`32`位`Intel`架构`CPU`
 
+### 创建中断使能函数
+```c
+void enable_interrupts();
+void disable_interrupts();
+```
+
+删除`kernel.asm`中的`sti`语句，可能有潜在的`panic`风险
+
 ### 
