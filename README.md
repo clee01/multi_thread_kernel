@@ -256,4 +256,30 @@ void disable_interrupts();
 
 删除`kernel.asm`中的`sti`语句，可能有潜在的`panic`风险
 
-### 
+### 分页机制
+```x86asm
+; 开启分页
+[BITS 32]
+
+section .asm
+
+global paging_load_directory
+global enable_paging
+
+paging_load_directory:
+    push ebp
+    mov ebp, esp
+    mov eax, [ebp+8]
+    mov cr3, eax
+    pop ebp
+    ret
+
+enable_paging:
+    push ebp
+    mov ebp, esp
+    mov eax, cr0
+    or eax, 0x80000000
+    mov cr0, eax
+    pop ebp
+    ret
+```
