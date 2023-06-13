@@ -283,3 +283,5 @@ enable_paging:
     pop ebp
     ret
 ```
+
+### 调整页表
