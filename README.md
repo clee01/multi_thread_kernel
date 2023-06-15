@@ -311,4 +311,10 @@ for (int b = 0; b < total; ++b) {
 }
 ```
 
-### 
+### 改进磁盘驱动程序
+```c
+// in /src/disk/disk.h
+void disk_search_and_init();
+struct disk* disk_get(int index);
+int disk_read_block(struct disk* idisk, unsigned int lba, int total, void* buf);
+```
