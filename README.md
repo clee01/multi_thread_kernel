@@ -319,4 +319,9 @@ struct disk* disk_get(int index);
 int disk_read_block(struct disk* idisk, unsigned int lba, int total, void* buf);
 ```
 
-### 
+### 创建路径解析器
+```c
+// in src/fs/pparser.h
+void pathparser_free(struct path_root* root);
+struct path_root* pathparser_parse(const char* path, const char* current_directory_path);
+```
