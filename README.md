@@ -325,3 +325,12 @@ int disk_read_block(struct disk* idisk, unsigned int lba, int total, void* buf);
 void pathparser_free(struct path_root* root);
 struct path_root* pathparser_parse(const char* path, const char* current_directory_path);
 ```
+
+### 创建一个磁盘流
+```c
+// in src/disk/streamer.h
+struct disk_stream* diskstream_new(int disk_id);
+int diskstream_seek(struct disk_stream* stream, int pos);
+int diskstream_read(struct disk_stream* stream, void* out, int total);
+void diskstream_close(struct disk_stream* stream);
+```
