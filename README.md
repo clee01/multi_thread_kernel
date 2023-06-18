@@ -334,3 +334,29 @@ int diskstream_seek(struct disk_stream* stream, int pos);
 int diskstream_read(struct disk_stream* stream, void* out, int total);
 void diskstream_close(struct disk_stream* stream);
 ```
+
+### 创建`FAT`文件系统
+```x86asm
+; FAT16 Header
+OEMIdentifier           db 'PEACHOS '
+BytesPerSector          dw 0x200
+SectorsPerCluster       db 0x80
+ReservedSectors         dw 200
+FATCopies               db 0x02
+RootDirEntries          dw 0x40
+NumSectors              dw 0x00
+MediaType               db 0xF8
+SectorsPerFat           dw 0x100
+SectorsPerTrack         dw 0x20
+NumberOfHeads           dw 0x40
+HiddenSectors           dd 0x00
+SectorsBig              dd 0x773594
+
+; Extended BPB (Dos 4.0)
+DriveNumber             db 0x80
+WinNTBit                db 0x00
+Signature               db 0x29
+VolumeID                dd 0xD105
+VolumeIDString          db 'PEACHOS BOO'
+SystemIDString          db 'FAT16   '
+```
