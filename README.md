@@ -360,3 +360,5 @@ VolumeID                dd 0xD105
 VolumeIDString          db 'PEACHOS BOO'
 SystemIDString          db 'FAT16   '
 ```
+
+### 实现`VFS`核心功能
