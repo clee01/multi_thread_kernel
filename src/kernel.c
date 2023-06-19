@@ -110,5 +110,7 @@ void kernel_main() {
     diskstream_seek(stream, 0x1fe);
     unsigned char* c = kzalloc(3);
     diskstream_read(stream, c, 3);
+    // p disk_get(0)
+    // Could not fetch register "orig_eax"; remote failure reply 'E14'
     while (1) {}
 }
