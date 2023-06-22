@@ -133,11 +133,9 @@ int fat16_sector_to_absolute(struct disk* disk, int sector) {
     return sector * disk->sector_size;
 }
 
-// To be optimized
 int fat16_get_total_items_for_directory(struct disk* disk, uint32_t directory_start_sector) {
     struct fat_directory_item item;
-    struct fat_directory_item empty_item;
-    memset(&empty_item, 0, sizeof(empty_item));
+    memset(&item, 0, sizeof(item));
 
     struct fat_private* fat_private = disk->fs_private;
 
