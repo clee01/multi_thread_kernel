@@ -368,3 +368,9 @@ SystemIDString          db 'FAT16   '
 ### 实现`FAT16`各类结构
 
 ### 实现`FAT16`解析函数
+
+### 实现`FAT16` `fopen`函数
+```c
+// in src/fs/file.c
+int fopen(const char* filename, const char* mode_str);
+```
