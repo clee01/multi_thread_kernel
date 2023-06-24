@@ -117,8 +117,9 @@ void kernel_main() {
     int fd = fopen("0:/hello.txt", "r");
     if (fd) {
         print("\nWe opened hello.txt\n");
+        fseek(fd, 2, SEEK_SET);
         char buf[13];
-        fread(buf, 12, 1, fd);
+        fread(buf, 10, 1, fd);
         buf[12] = 0x00;
         print(buf);
     }
