@@ -382,4 +382,7 @@ void* fat16_open(struct disk* disk, struct path_part* path, FILE_MODE mode);
 ```c
 // in src/fs/file.c
 int fread(void* ptr, uint32_t size, uint32_t nmemb, int fd);
+
+// in src/fs/fat/fat16.c
+int fat16_read(struct disk* disk, void* descriptor, uint32_t size, uint32_t nmemb, char* out_ptr);
 ```
