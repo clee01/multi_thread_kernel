@@ -401,5 +401,6 @@ int fat16_seek(void *private, uint32_t offset, FILE_SEEK_MODE seek_mode);
 // in src/fs/file.c
 int fstat(int fd, struct file_stat* stat);
 
-
+// in src/fs/fat/fat16.c
+int fat16_stat(struct disk* disk, void* private, struct file_stat* stat);
 ```
