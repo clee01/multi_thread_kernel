@@ -125,6 +125,9 @@ void kernel_main() {
 
         struct file_stat s;
         fstat(fd, &s);
+        fclose(fd);
+
+        print("\ntesting\n");
     }
     while (1) {}
 }
