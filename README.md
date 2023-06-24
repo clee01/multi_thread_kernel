@@ -395,3 +395,11 @@ int fseek(int fd, int offset, FILE_SEEK_MODE whence);
 // in src/fs/fat/fat16.c
 int fat16_seek(void *private, uint32_t offset, FILE_SEEK_MODE seek_mode);
 ```
+
+### 实现`FAT16` `fstat`函数
+```c
+// in src/fs/file.c
+int fstat(int fd, struct file_stat* stat);
+
+
+```
