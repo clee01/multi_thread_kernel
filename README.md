@@ -373,4 +373,7 @@ SystemIDString          db 'FAT16   '
 ```c
 // in src/fs/file.c
 int fopen(const char* filename, const char* mode_str);
+
+// in src/fs/fat/fat16.c
+void* fat16_open(struct disk* disk, struct path_part* path, FILE_MODE mode);
 ```

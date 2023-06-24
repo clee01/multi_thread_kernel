@@ -106,11 +106,17 @@ void kernel_main() {
     // struct path_root* root_path = pathparser_parse("1:/bin/shell.exe", NULL);
     // if (root_path) {}
 
-    struct disk_stream* stream = diskstream_new(0);
-    diskstream_seek(stream, 0x1fe);
-    unsigned char* c = kzalloc(3);
-    diskstream_read(stream, c, 3);
+    // struct disk_stream* stream = diskstream_new(0);
+    // diskstream_seek(stream, 0x1fe);
+    // unsigned char* c = kzalloc(3);
+    // diskstream_read(stream, c, 3);
+
     // p disk_get(0)
     // Could not fetch register "orig_eax"; remote failure reply 'E14'
+
+    int fd = fopen("0:/hello.txt", "r");
+    if (fd) {
+        print("We opened hello.txt\n");
+    }
     while (1) {}
 }
