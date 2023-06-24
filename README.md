@@ -386,3 +386,10 @@ int fread(void* ptr, uint32_t size, uint32_t nmemb, int fd);
 // in src/fs/fat/fat16.c
 int fat16_read(struct disk* disk, void* descriptor, uint32_t size, uint32_t nmemb, char* out_ptr);
 ```
+
+### 实现`FAT16` `fseek`函数
+```c
+in src/fs/file.c
+int fseek(int fd, int offset, FILE_SEEK_MODE whence);
+
+```
