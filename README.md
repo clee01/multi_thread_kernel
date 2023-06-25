@@ -419,3 +419,5 @@ int fat16_close(void* private);
 // in src/kernel.h
 void panic(const char* msg);
 ```
+
+### 用C实现全局描述表
