@@ -413,3 +413,9 @@ int fclose(int fd);
 // in src/fs/fat/fat16.c
 int fat16_close(void* private);
 ```
+
+### 实现`panic`函数
+```c
+// in src/kernel.h
+void panic(const char* msg);
+```
