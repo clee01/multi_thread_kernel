@@ -423,3 +423,11 @@ void panic(const char* msg);
 ### 用C实现全局描述表
 
 ### 实现`TSS`(Task Switch Segment)
+
+### 实现Task相关函数
+```c
+struct task* task_new();
+struct task* task_current();
+struct task* task_get_next();
+int task_free(struct task* task);
+```
