@@ -664,7 +664,7 @@ int fat16_stat(struct disk* disk, void* private, struct file_stat* stat) {
     stat->flags = 0x00;
 
     if (ritem->attribute & FAT_FILE_READ_ONLY) {
-        stat->flags |= FILE_STAT_READ_ONLY;  // Possible buggy?
+        stat->flags |= FILE_STAT_READ_ONLY;  // Possible Buggy?
     }
 
 out:

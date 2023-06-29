@@ -433,3 +433,7 @@ int task_free(struct task* task);
 ```
 
 ### 实现进程相关函数
+```c
+// in src/task/process.c
+int process_load(const char* filename, struct process** process);
+```

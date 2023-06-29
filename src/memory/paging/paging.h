@@ -27,4 +27,9 @@ void enable_paging();
 int paging_set(uint32_t* directory, void* virt, uint32_t val);
 bool paging_is_aligned(void* addr);
 
+int paging_map_to(uint32_t *directory, void *virt, void *phys, void *phys_end, int flags);
+int paging_map_range(uint32_t* directory, void* virt, void* phys, int count, int flags);
+int paging_map(uint32_t* directory, void* virt, void* phys, int flags);
+void* paging_align_address(void* ptr);
+
 #endif
