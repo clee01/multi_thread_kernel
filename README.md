@@ -439,3 +439,18 @@ int process_load(const char* filename, struct process** process);
 ```
 
 ### 实现用户态功能
+
+### 创建第一个用户程序
+```x86asm
+; in programs/blank/blank.asm
+_start:
+
+label:
+    jmp label
+```
+
+```powershell
+# 反汇编 用户程序
+ndisasm -b32 programs/blank/blank.bin
+00000000  EBFE              jmp short 0x0
+```
