@@ -57,7 +57,7 @@ static int process_load_binary(const char *filename, struct process *process)
         goto out;
     }
 
-    if (fread(program_data_ptr, stat.filesize, 1, fd) != 1)
+    if (fread(program_data_ptr, stat.filesize, 1, fd) != 0)
     {
         res = -EIO;
         goto out;
@@ -159,6 +159,7 @@ int process_load_for_slot(const char *filename, struct process **process, int pr
     if (ERROR_I(task) == 0)
     {
         res = ERROR_I(task); // Buggy
+        goto out;
     }
 
     _process->task = task;

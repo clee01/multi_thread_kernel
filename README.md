@@ -454,3 +454,8 @@ label:
 ndisasm -b32 programs/blank/blank.bin
 00000000  EBFE              jmp short 0x0
 ```
+
+### 运行用户程序
+* 可以看到，用户程序一直循环执行在此处`jmp 0x400000`
+
+![image](https://github.com/clee01/multi_thread_kernel/blob/master/img/user_land_process.jpg)

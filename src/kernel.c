@@ -14,6 +14,9 @@
 #include "config.h"
 #include "memory/memory.h"
 #include "task/tss.h"
+#include "task/task.h"
+#include "task/process.h"
+#include "status.h"
 
 uint16_t* video_mem = 0;
 uint16_t terminal_row = 0;
@@ -127,6 +130,7 @@ void kernel_main() {
 
     // Enable paging
     enable_paging();
+
     // char* ptr2 = (char*)0x1000;
     // ptr2[0] = 'A';
     // ptr2[1] = 'B';
@@ -137,7 +141,7 @@ void kernel_main() {
     // disk_read_sector(0, 1, buf);
 
     // Enable the system interrupts
-    enable_interrupts();
+    // enable_interrupts();
 
     // struct path_root* root_path = pathparser_parse("1:/bin/shell.exe", NULL);
     // if (root_path) {}
@@ -150,20 +154,13 @@ void kernel_main() {
     // p disk_get(0)
     // Could not fetch register "orig_eax"; remote failure reply 'E14'
 
-    int fd = fopen("0:/hello.txt", "r");
-    if (fd) {
-        // print("\nWe opened hello.txt\n");
-        // fseek(fd, 2, SEEK_SET);
-        // char buf[13];
-        // fread(buf, 10, 1, fd);
-        // buf[12] = 0x00;
-        // print(buf);
-
-        struct file_stat s;
-        fstat(fd, &s);
-        fclose(fd);
-
-        print("\ntesting\n");
+    struct process* process = 0;
+    int res = process_load("0:/blank.bin", &process);
+    if (res != PEACHOS_ALL_OK) {
+        panic("Failed to load blank.bin\n");
     }
+
+    task_run_first_ever_task();
+
     while (1) {}
 }
