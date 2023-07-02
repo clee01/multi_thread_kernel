@@ -459,3 +459,5 @@ ndisasm -b32 programs/blank/blank.bin
 * 可以看到，用户程序一直循环执行在此处`jmp 0x400000`
 
 ![image](https://github.com/clee01/multi_thread_kernel/blob/master/img/user_land_process.jpg)
+
+### 创建第一个内核命令
