@@ -17,6 +17,7 @@
 #include "task/task.h"
 #include "task/process.h"
 #include "status.h"
+#include "isr80h/isr80h.h"
 
 uint16_t* video_mem = 0;
 uint16_t terminal_row = 0;
@@ -158,6 +159,9 @@ void kernel_main() {
 
     // p disk_get(0)
     // Could not fetch register "orig_eax"; remote failure reply 'E14'
+
+    // Register the kernel commands
+    isr80h_register_commands();
 
     struct process* process = 0;
     int res = process_load("0:/blank.bin", &process);
