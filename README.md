@@ -461,3 +461,5 @@ ndisasm -b32 programs/blank/blank.bin
 ![image](https://github.com/clee01/multi_thread_kernel/blob/master/img/user_land_process.jpg)
 
 ### 创建第一个内核命令
+
+### 从用户进程的任务中读取字符串
