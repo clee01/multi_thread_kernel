@@ -466,3 +466,5 @@ ndisasm -b32 programs/blank/blank.bin
 
 ### 读取用户进程任务的栈空间
 * 用户任务中断调用内核例程时，可以将入参`push`到当前进程的栈空间，内核例程运行时，可以通过函数`task_get_stack_item`获取
+
+### 创建内核输出字符命令
