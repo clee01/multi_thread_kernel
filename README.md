@@ -478,3 +478,5 @@ ndisasm -b32 programs/blank/blank.bin
 ### 进程切换
 
 ### 用户态获取键盘输入
+
+### 终端逐个输出字符
