@@ -480,3 +480,5 @@ ndisasm -b32 programs/blank/blank.bin
 ### 用户态获取键盘输入
 
 ### 终端逐个输出字符
+
+### 终端实现退格键
